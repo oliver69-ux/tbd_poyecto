@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Notificaciones</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('img/26786-plantas.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    h1 {
+      color: #2a5d84;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .notificacion {
+      border-bottom: 1px solid #ddd;
+      padding: 15px 0;
+    }
+    .notificacion:last-child {
+      border-bottom: none;
+    }
+    .notificacion p {
+      margin: 5px 0;
+      font-size: 16px;
+      color: #333;
+    }
+    .fecha {
+      font-size: 14px;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Notificaciones</h1>
+    <div class="notificacion">
+      <p><strong>¡Nuevo punto de reciclaje disponible!</strong></p>
+      <p>Se ha abierto un nuevo centro cerca de ti.</p>
+      <div class="fecha">Hace 2 horas</div>
+    </div>
+    <div class="notificacion">
+      <p><strong>Recordatorio de reciclaje</strong></p>
+      <p>No olvides llevar tus materiales reciclables esta semana.</p>
+      <div class="fecha">Hace 1 día</div>
+    </div>
+    <div class="notificacion">
+      <p><strong>Actualización de puntos</strong></p>
+      <p>Has ganado 100 puntos adicionales.</p>
+      <div class="fecha">Hace 3 días</div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Listado de Roles</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('img/26786-plantas.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    h2 {
+      color: #2a5d84;
+      text-align: center;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+    th {
+      background-color: #2a5d84;
+      color: white;
+    }
+    select {
+      padding: 5px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #2a5d84;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1e4569;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Listado de Roles y Usuarios</h2>
+  <form id="rolesForm">
+    <table>
+      <thead>
+        <tr>
+          <th>Usuario</th>
+          <th>Correo</th>
+          <th>Rol</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Juan Pérez</td>
+          <td>juan@example.com</td>
+          <td>
+            <select name="rol_1">
+              <option value="Administrador">Administrador</option>
+              <option value="Editor">Editor</option>
+              <option value="Usuario">Usuario</option>
+              <option value="Invitado">Invitado</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Ana Gómez</td>
+          <td>ana@example.com</td>
+          <td>
+            <select name="rol_2">
+              <option value="Administrador">Administrador</option>
+              <option value="Editor" selected>Editor</option>
+              <option value="Usuario">Usuario</option>
+              <option value="Invitado">Invitado</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Carlos Ruiz</td>
+          <td>carlos@example.com</td>
+          <td>
+            <select name="rol_3">
+              <option value="Administrador">Administrador</option>
+              <option value="Editor">Editor</option>
+              <option value="Usuario" selected>Usuario</option>
+              <option value="Invitado">Invitado</option>
+            </select>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button type="submit">Guardar Cambios</button>
+  </form>
+
+  <script>
+    document.getElementById('rolesForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const roles = [];
+      const selects = this.querySelectorAll('select');
+
+      selects.forEach(select => {
+        roles.push({
+          usuario: select.closest('tr').children[0].textContent,
+          correo: select.closest('tr').children[1].textContent,
+          rol: select.value
+        });
+      });
+
+      console.log('Roles guardados:', roles);
+      alert('Los cambios de roles han sido guardados (simulado).');
+
+      // Aquí podrías enviar 'roles' a tu servidor o guardarlos localmente
+    });
+  </script>
+
+</body>
+</html>

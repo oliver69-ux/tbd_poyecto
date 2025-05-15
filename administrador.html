@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Administración de Usuarios</title>
+  <style>
+     body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('img/26786-plantas.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .contenedor {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 320px;
+    }
+
+    h2 {
+      color: #2a5d84;
+      margin-bottom: 20px;
+    }
+
+    .boton-opcion {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #f8f8f8;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .boton-opcion:hover {
+      background-color: #eef5f9;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="contenedor">
+    <h2>👤 Administración de usuarios</h2>
+
+    <!-- Botones existentes -->
+    <button class="boton-opcion" onclick="window.location.href='file:///C:/Users/Oliver/Desktop/py/registro.html'">Crear usuario</button>
+    <button class="boton-opcion" onclick="window.location.href='file:///C:/Users/Oliver/Desktop/py/listadeusuario.html'">Listado de usuarios</button>
+    <button class="boton-opcion" onclick="window.location.href='file:///C:/Users/Oliver/Desktop/py/tiposDePermisos.html'">Asignar permisos a usuarios</button>
+    <button class="boton-opcion" onclick="window.location.href='file:///C:/Users/Oliver/Desktop/py/listadoDeRoles.html'">Listado de roles</button>
+
+    <!-- Nuevos botones -->
+    <button class="boton-opcion" onclick="window.location.href='file:///C:/Users/Oliver/Desktop/py/principal.html'">Entrar como usuario</button>
+    <button class="boton-opcion" onclick="window.location.href='file:///C:/Users/Oliver/Desktop/py/descuento.html'">Ver descuentos</button>
+    <button class="boton-opcion" onclick="window.location.href='file:///C:/Users/Oliver/Desktop/py/agregarPuntosDeReciclaje.html'">Agregar puntos de reciclaje</button>
+     <button class="boton-opcion" onclick="window.location.href='file:///C:/Users/Oliver/Desktop/py/reporteAmbienta.html'">Reporte ambiental</button>
+
+    <button class="boton-opcion" onclick="window.close()">Salir</button>
+  </div>
+
+</body>
+</html>

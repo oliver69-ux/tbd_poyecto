@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Opciones de Inicio</title>
+  <style>
+  body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('img/26786-plantas.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      background-color: #ffffff;
+      padding: 40px 60px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 30px;
+      color: #4b6043;
+    }
+
+    .btn {
+      display: block;
+      width: 200px;
+      padding: 12px;
+      margin: 10px auto;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      background-color: #6a9c6a;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #588a58;
+    }
+
+    .btn.alt {
+      background-color: #446e44;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Selecciona una opción</h2>
+
+    <!-- Redirección a la interfaz de ingreso -->
+    <button class="btn" onclick="location.href='file:///C:/Users/Oliver/Desktop/py/ingreso.html'">Ingresar</button>
+
+    <!-- Redirección a la interfaz de cliente -->
+    <button class="btn alt" onclick="location.href='file:///C:/Users/Oliver/Desktop/py/principal.html'">Cliente</button>
+
+    <!-- Redirección a la interfaz de administrador -->
+    <button class="btn alt" onclick="location.href='file:///C:/Users/Oliver/Desktop/py/administrador.html'">Administrador</button>
+  </div>
+</body>
+</html>

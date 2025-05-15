@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reporte Ambiental</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('img/26786-plantas.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .contenedor {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 400px;
+    }
+
+    h2 {
+      color: #2a5d84;
+      margin-bottom: 20px;
+    }
+
+    #reduccion-ambiental, #materiales-desechados {
+      font-weight: bold;
+      color: #3a803a;
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    #materiales-desechados ul {
+      margin: 5px 0 20px 20px;
+      padding: 0;
+      color: #2a5d84;
+    }
+
+    textarea {
+      width: 100%;
+      height: 150px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      resize: vertical;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #2a5d84;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1c3e5c;
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <h2>📄 Reporte Ambiental</h2>
+    
+    <div id="reduccion-ambiental">Cargando reducción ambiental...</div>
+    <div id="materiales-desechados">Cargando materiales desechados...</div>
+
+    <form action="#" method="post">
+      <textarea name="reporte" placeholder="Describe el impacto ambiental, problemas observados o sugerencias..."></textarea>
+      <br>
+      <button type="submit">Enviar reporte</button>
+    </form>
+  </div>
+
+  <script>
+    // Simulamos datos obtenidos (pueden venir de base de datos o API)
+    const reduccionKg = 1250.75; // kg reducidos
+    const materiales = ['Plástico', 'Vidrio', 'Papel', 'Metal'];
+
+    // Mostrar la cantidad reducida
+    document.getElementById('reduccion-ambiental').textContent = 
+      `🌿 Cantidad reducida en el ambiente gracias a los desechos: ${reduccionKg.toFixed(2)} kg`;
+
+    // Mostrar la lista de materiales desechados
+    const materialesDiv = document.getElementById('materiales-desechados');
+    materialesDiv.textContent = '♻️ Tipos de materiales desechados:';
+    const ul = document.createElement('ul');
+    materiales.forEach(material => {
+      const li = document.createElement('li');
+      li.textContent = material;
+      ul.appendChild(li);
+    });
+    materialesDiv.appendChild(ul);
+  </script>
+</body>
+</html>

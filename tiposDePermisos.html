@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Asignar Permisos a Usuarios</title>
+  <style>
+   body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('img/26786-plantas.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    h2 {
+      color: #2a5d84;
+      text-align: center;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+    th {
+      background-color: #2a5d84;
+      color: white;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #2a5d84;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1e4569;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Asignar Permisos a Usuarios</h2>
+  <form id="permisosForm">
+    <table>
+      <thead>
+        <tr>
+          <th>Usuario</th>
+          <th>Correo</th>
+          <th>Permiso A</th>
+          <th>Permiso B</th>
+          <th>Permiso C</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Juan Pérez</td>
+          <td>juan@example.com</td>
+          <td><input type="checkbox" name="permisoA_1"></td>
+          <td><input type="checkbox" name="permisoB_1"></td>
+          <td><input type="checkbox" name="permisoC_1"></td>
+        </tr>
+        <tr>
+          <td>Ana Gómez</td>
+          <td>ana@example.com</td>
+          <td><input type="checkbox" name="permisoA_2"></td>
+          <td><input type="checkbox" name="permisoB_2"></td>
+          <td><input type="checkbox" name="permisoC_2"></td>
+        </tr>
+        <tr>
+          <td>Carlos Ruiz</td>
+          <td>carlos@example.com</td>
+          <td><input type="checkbox" name="permisoA_3"></td>
+          <td><input type="checkbox" name="permisoB_3"></td>
+          <td><input type="checkbox" name="permisoC_3"></td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="submit">Guardar permisos</button>
+  </form>
+
+  <script>
+    document.getElementById('permisosForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Permisos guardados correctamente (simulado).');
+      // Aquí podrías agregar código para guardar en backend o localStorage
+    });
+  </script>
+
+</body>
+</html>

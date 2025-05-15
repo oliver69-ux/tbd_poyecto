@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Puntos de Reciclaje - Cochabamba</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
+    h2 {
+      margin: 1em;
+      text-align: center;
+    }
+    .map-container {
+      width: 100%;
+      height: 300px;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .materials-info {
+      font-weight: bold;
+      color: #2a5d84;
+      margin-bottom: 8px;
+      padding-left: 10px;
+    }
+    .input-area {
+      max-width: 400px;
+      margin: 0 auto 30px auto;
+      text-align: center;
+    }
+    .input-area label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #2a5d84;
+    }
+    .input-area input {
+      padding: 8px;
+      width: 180px;
+      margin: 0 10px 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    .input-area button {
+      padding: 8px 16px;
+      font-weight: bold;
+      background-color: #2a5d84;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .input-area button:hover {
+      background-color: #1c3e5c;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Puntos de Reciclaje en Cochabamba</h2>
+
+  <div class="input-area">
+    <label for="material">Material que estás desechando:</label>
+    <input type="text" id="material" placeholder="Ejemplo: Plástico">
+    <label for="cantidad">Cantidad (kg):</label>
+    <input type="number" id="cantidad" placeholder="Ejemplo: 2.5" min="0" step="0.01">
+    <button onclick="mostrarDesecho()">Mostrar desecho</button>
+    <p id="info-desecho" style="margin-top:15px; font-weight:bold; color:#3a803a;"></p>
+  </div>
+
+  <div class="map-container">
+    <div class="materials-info">Materiales aceptados: Plástico, Papel, Cartón</div>
+    <iframe
+      src="https://maps.google.com/maps?q=Plaza%20Colon%20Cochabamba&t=&z=15&ie=UTF8&iwloc=&output=embed"
+      width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="map-container">
+    <div class="materials-info">Materiales aceptados: Vidrio, Metal</div>
+    <iframe
+      src="https://maps.google.com/maps?q=Universidad%20Mayor%20de%20San%20Simón%20Cochabamba&t=&z=15&ie=UTF8&iwloc=&output=embed"
+      width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="map-container">
+    <div class="materials-info">Materiales aceptados: Plástico, Metal, Papel</div>
+    <iframe
+      src="https://maps.google.com/maps?q=Mercado%20La%20Cancha%20Cochabamba&t=&z=15&ie=UTF8&iwloc=&output=embed"
+      width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="map-container">
+    <div class="materials-info">Materiales aceptados: Papel, Cartón</div>
+    <iframe
+      src="https://maps.google.com/maps?q=Av.%20America%20y%20Melchor%20Urquidi%20Cochabamba&t=&z=15&ie=UTF8&iwloc=&output=embed"
+      width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="map-container">
+    <div class="materials-info">Materiales aceptados: Vidrio, Plástico</div>
+    <iframe
+      src="https://maps.google.com/maps?q=Av.%20Petrolera%20Zona%20Sur%20Cochabamba&t=&z=15&ie=UTF8&iwloc=&output=embed"
+      width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen>
+    </iframe>
+  </div>
+
+<script>
+  function mostrarDesecho() {
+    const material = document.getElementById('material').value.trim();
+    const cantidad = parseFloat(document.getElementById('cantidad').value);
+
+    const info = document.getElementById('info-desecho');
+    if (material === '' || isNaN(cantidad) || cantidad <= 0) {
+      info.textContent = 'Por favor ingresa un material válido y una cantidad mayor que 0.';
+      info.style.color = 'red';
+    } else {
+      info.style.color = '#3a803a';
+      info.textContent = `Estás desechando ${cantidad.toFixed(2)} kg de ${material}. ¡Gracias por reciclar! ♻️`;
+    }
+  }
+</script>
+
+</body>
+</html>

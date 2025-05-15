@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Catálogo de Productos Interactivo</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f1;
+    }
+
+    .top-bar {
+      text-align: center;
+      padding: 15px;
+      background-color: #fff;
+      font-size: 24px;
+      font-weight: bold;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .busqueda {
+      padding: 10px;
+      text-align: center;
+      background-color: #ffffff;
+    }
+
+    .busqueda input {
+      width: 80%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    .categorias {
+      display: flex;
+      justify-content: space-around;
+      padding: 20px 10px;
+      background: linear-gradient(to right, #2d572c, #7bb35f);
+      flex-wrap: wrap;
+    }
+
+    .categoria {
+      background-color: #fdf2cc;
+      border-radius: 12px;
+      padding: 15px 10px;
+      text-align: center;
+      width: 80px;
+      font-size: 12px;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.3s ease;
+    }
+
+    .categoria:hover {
+      transform: scale(1.05);
+      background-color: #ffe799;
+    }
+
+    .categoria img {
+      width: 30px;
+      height: 30px;
+      margin-bottom: 5px;
+    }
+
+    .productos {
+      padding: 20px;
+    }
+
+    h2 {
+      margin: 0 0 20px 0;
+      text-align: center;
+      color: #3a5932;
+    }
+
+    .producto-lista {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .producto {
+      background-color: #ffffff;
+      border-radius: 15px;
+      width: 180px;
+      padding: 15px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .producto:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .producto img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .producto .precio {
+      font-weight: bold;
+      margin: 8px 0;
+      color: #388e3c;
+    }
+
+    .producto small {
+      color: #777;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-around;
+      padding: 12px;
+      background-color: #ffffff;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 10;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #2f5f2f;
+      font-weight: bold;
+      font-size: 14px;
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 300px;
+      text-align: center;
+    }
+
+    .modal button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background: #388e3c;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">Catálogo de Productos</div>
+  <div class="busqueda">
+    <input type="text" id="buscador" placeholder="Buscar productos..." onkeyup="buscarProducto()">
+  </div>
+
+  <div class="categorias">
+    <div class="categoria" onclick="filtrarProductos('comida')">
+      <img src="https://img.icons8.com/ios-filled/50/hamburger.png" alt="Comida">
+      COMIDA
+    </div>
+    <div class="categoria" onclick="filtrarProductos('entretenimiento')">
+      <img src="https://img.icons8.com/ios-filled/50/musical-notes.png" alt="Entretenimiento">
+      ENTRETENI
+    </div>
+    <div class="categoria" onclick="filtrarProductos('ofertas')">
+      <img src="https://img.icons8.com/ios-filled/50/discount.png" alt="Ofertas">
+      OFERTAS
+    </div>
+    <div class="categoria" onclick="filtrarProductos('aesthetic')">
+      <img src="img\18073293-iconos-de-maquillaje-sobre-fondo-marrón-ilustración-vectorial.jpg" alt="Aesthetic">
+      AESTHETIC
+    </div>
+  </div>
+
+  <div class="productos">
+    <h2>Para Ti</h2>
+    <div class="producto-lista" id="productos-container">
+      <div class="producto" data-categoria="comida" data-nombre="Traticket - Pollo" data-tienda="KFC">
+        <img src="img\pollo.jpg" alt="Traticket">
+        <p>Traticket - Pollo a la brasa</p>
+        <p class="precio">Puntos 3,000</p>
+        <small>¡Disfruta tu comida!</small>
+      </div>
+      <div class="producto" data-categoria="aesthetic" data-nombre="ZEN SLIM" data-tienda="LifeShop">
+        <img src="img\zen.jpg" alt="ZEN SLIM">
+        <p>ZEN SLIM SCIENCE LIFE BOLIVIA</p>
+        <p class="precio">Puntos 40,000</p>
+        <small>¡Pide ahora y recibe pronto!</small>
+      </div>
+      <div class="producto" data-categoria="entretenimiento" data-nombre="Xiaomi Mi Band" data-tienda="Xiaomi Store">
+        <img src="img\Xiaomi-15-Ultra-1024x576.jpg" alt="Xiaomi Band">
+        <p>Xiaomi Mi Band 5</p>
+        <p class="precio">Puntos 200,000</p>
+        <small>¡Tecnología al alcance!</small>
+      </div>
+      <div class="producto" data-categoria="ofertas" data-nombre="Lapiz Labial" data-tienda="maquillaje">
+        <img src="img\ITE-0008174-ART.-LABIAL-PERFECT-MAT-134.125.jpg" alt="Lapiz Labial">
+        <p>Lapiz Labial</p>
+        <p class="precio">Puntos 10,000</p>
+        <small>¡Sonido sin límites!</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón "Ofertas" eliminado de aquí -->
+  <div class="nav">
+    <a onclick="mostrarTodos()">Ver Todo</a>
+    <a onclick="mostrarTiendas()">Tiendas</a>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="modal-content" id="modal-content"></div>
+  </div>
+
+  <script>
+    function filtrarProductos(categoria) {
+      const productos = document.querySelectorAll('.producto');
+      productos.forEach(producto => {
+        const cat = producto.getAttribute('data-categoria');
+        producto.style.display = cat === categoria ? 'block' : 'none';
+      });
+    }
+
+    function mostrarTodos() {
+      const productos = document.querySelectorAll('.producto');
+      productos.forEach(p => p.style.display = 'block');
+    }
+
+    function buscarProducto() {
+      const input = document.getElementById('buscador').value.toLowerCase();
+      const productos = document.querySelectorAll('.producto');
+      productos.forEach(producto => {
+        const nombre = producto.getAttribute('data-nombre').toLowerCase();
+        producto.style.display = nombre.includes(input) ? 'block' : 'none';
+      });
+    }
+
+    function mostrarTiendas() {
+      const productos = document.querySelectorAll('.producto');
+      let tiendas = new Set();
+      productos.forEach(p => tiendas.add(p.getAttribute('data-tienda')));
+
+      let contenido = `<h3>Tiendas disponibles:</h3>`;
+      tiendas.forEach(t => contenido += `<p>${t}</p>`);
+      contenido += `<button onclick="cerrarModal()">Cerrar</button>`;
+
+      document.getElementById('modal-content').innerHTML = contenido;
+      document.getElementById('modal').style.display = 'flex';
+    }
+
+    function cerrarModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+
+    document.querySelectorAll('.producto').forEach(prod => {
+      prod.addEventListener('click', () => {
+        const nombre = prod.getAttribute('data-nombre');
+        const tienda = prod.getAttribute('data-tienda');
+        const contenido = `
+          <h3>Estás comprando:</h3>
+          <p><strong>${nombre}</strong></p>
+          <p>Recoger en tienda: <strong>${tienda}</strong></p>
+          <button onclick="cerrarModal()">Aceptar</button>
+        `;
+        document.getElementById('modal-content').innerHTML = contenido;
+        document.getElementById('modal').style.display = 'flex';
+      });
+    });
+  </script>
+
+</body>
+</html>

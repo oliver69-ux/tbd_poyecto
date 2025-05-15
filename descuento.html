@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Descuentos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #fff8e1;
+      padding-top: 60px;
+    }
+
+    .formulario {
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 20px;
+      width: 320px;
+      margin: 0 auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="date"] {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #ffc107;
+      color: #000;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #e0a800;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Descuentos disponibles</h2>
+
+  <div class="formulario">
+    <h3>Agregar nuevo producto en descuento</h3>
+    <form>
+      <input type="text" name="producto" placeholder="Nombre del producto" required><br>
+      <input type="number" name="descuento" placeholder="Descuento (%)" min="1" max="100" required><br>
+      <input type="date" name="inicio" required placeholder="Fecha de inicio"><br>
+      <input type="date" name="fin" required placeholder="Fecha de finalización"><br>
+      <button type="submit">Guardar descuento</button>
+    </form>
+  </div>
+
+</body>
+</html>

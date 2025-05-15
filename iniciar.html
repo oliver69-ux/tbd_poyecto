@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Iniciar sesión</title>
+  <style>
+     body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('img/26786-plantas.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .form-container {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #6B4F33;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #5A5A5A;
+    }
+
+    input[type="text"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .btn {
+      width: 48%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn.registro {
+      background-color: #d3d3d3;
+      color: black;
+    }
+
+    .btn.iniciar {
+      background-color: #ffffff;
+      color: #000;
+      border: 1px solid #ccc;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <form action="#" method="post">
+      <label for="carnet">Carnet de Identidad</label>
+      <input type="text" id="carnet" name="carnet" required>
+
+      <label for="telefono">Número de teléfono móvil 📱</label>
+      <input type="tel" id="telefono" name="telefono" required>
+
+      <div class="buttons">
+        <button type="submit" class="btn registro">Registro</button>
+        <button type="button" class="btn iniciar" onclick="location.href='file:///C:/Users/Oliver/Desktop/py/principal.html'">Iniciar sesión</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

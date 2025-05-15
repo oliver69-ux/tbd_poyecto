@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registrar nueva cuenta</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('img/26786-plantas.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-container {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #6B4F33;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #5A5A5A;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    input[type="submit"] {
+      background-color: #6B4F33;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      width: 100%;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #5a3f28;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Registrar nueva cuenta</h2>
+    <form onsubmit="return validarFormulario(event)">
+      <label for="nombres">Nombres</label>
+      <input type="text" id="nombres" name="nombres" required>
+
+      <label for="apellidos">Apellidos</label>
+      <input type="text" id="apellidos" name="apellidos" required>
+
+      <label for="email">E-mail</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="contrasena">Contraseña</label>
+      <input type="password" id="contrasena" name="contrasena" required>
+
+      <label for="confirmar">Confirmar Contraseña</label>
+      <input type="password" id="confirmar" name="confirmar" required>
+
+      <input type="submit" value="Registrar">
+    </form>
+  </div>
+
+  <script>
+    function validarFormulario(event) {
+      event.preventDefault(); // Evita que se envíe el formulario
+
+      const pass = document.getElementById("contrasena").value;
+      const confirm = document.getElementById("confirmar").value;
+
+      if (pass !== confirm) {
+        alert("⚠️ Las contraseñas no coinciden.");
+        return false;
+      }
+
+      // ✅ Si todo está bien, redirigir a otra página
+      window.location.href = "file:///C:/Users/Oliver/Desktop/py/iniciar.html"; 
+      return true;
+    }
+  </script>
+</body>
+</html>
