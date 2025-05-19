@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Registrar nueva cuenta</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', sans-serif;
       background-image: url('img/26786-plantas.jpg');
       background-size: cover;
       background-position: center;
@@ -19,89 +25,105 @@
     }
 
     .form-container {
-      background-color: rgba(255, 255, 255, 0.9);
-      padding: 30px 40px;
-      border-radius: 15px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-      max-width: 400px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 20px 25px;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(133, 183, 0, 0.7);
+      max-width: 340px;
       width: 100%;
     }
 
     h2 {
       text-align: center;
-      margin-bottom: 20px;
-      color: #6B4F33;
+      font-size: 1.5rem;
+      color: #4a5d00;
+      margin-bottom: 15px;
     }
 
     label {
+      font-size: 0.85rem;
+      color: #567a00;
+      font-weight: 600;
+      margin-bottom: 3px;
       display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-      color: #5A5A5A;
     }
 
     input[type="text"],
     input[type="email"],
-    input[type="password"] {
+    input[type="password"],
+    input[type="tel"] {
       width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      padding: 6px 10px;
+      margin-bottom: 10px;
+      border: 1px solid #a4d01b;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      background: #faffea;
     }
 
     input[type="submit"] {
-      background-color: #6B4F33;
+      background: linear-gradient(45deg, #84b72d, #a9d52c);
       color: white;
+      font-weight: 600;
+      font-size: 1rem;
       padding: 10px;
       border: none;
-      border-radius: 5px;
+      border-radius: 10px;
       width: 100%;
       cursor: pointer;
+      margin-top: 10px;
     }
 
     input[type="submit"]:hover {
-      background-color: #5a3f28;
+      background: linear-gradient(45deg, #9dd12b, #c2f20a);
+    }
+
+    @media (max-height: 650px) {
+      .form-container {
+        scale: 0.9;
+      }
     }
   </style>
 </head>
 <body>
   <div class="form-container">
-    <h2>Registrar nueva cuenta</h2>
+    <h2>Registrar cuenta</h2>
     <form onsubmit="return validarFormulario(event)">
       <label for="nombres">Nombres</label>
-      <input type="text" id="nombres" name="nombres" required>
+      <input type="text" id="nombres" name="nombres" required placeholder="Ej: Juan" />
 
       <label for="apellidos">Apellidos</label>
-      <input type="text" id="apellidos" name="apellidos" required>
+      <input type="text" id="apellidos" name="apellidos" required placeholder="Ej: Pérez" />
+
+      <label for="celular">Celular</label>
+      <input type="tel" id="celular" name="celular" pattern="[0-9]{8,15}" required placeholder="Debe tener entre 8 y 15 dígitos" />
+
+      <label for="identidad">Identidad</label>
+      <input type="text" id="identidad" name="identidad" pattern="[0-9]{6,15}" required placeholder="Número de carnet" />
 
       <label for="email">E-mail</label>
-      <input type="email" id="email" name="email" required>
+      <input type="email" id="email" name="email" required placeholder="Ej: ejemplo@correo.com" />
 
       <label for="contrasena">Contraseña</label>
-      <input type="password" id="contrasena" name="contrasena" required>
+      <input type="password" id="contrasena" name="contrasena" required placeholder="Mínimo 6 caracteres" />
 
-      <label for="confirmar">Confirmar Contraseña</label>
-      <input type="password" id="confirmar" name="confirmar" required>
+      <label for="confirmar">Confirmar</label>
+      <input type="password" id="confirmar" name="confirmar" required placeholder="Repite la contraseña" />
 
-      <input type="submit" value="Registrar">
+      <input type="submit" value="Registrar" />
     </form>
   </div>
 
   <script>
     function validarFormulario(event) {
-      event.preventDefault(); // Evita que se envíe el formulario
-
+      event.preventDefault();
       const pass = document.getElementById("contrasena").value;
       const confirm = document.getElementById("confirmar").value;
-
       if (pass !== confirm) {
         alert("⚠️ Las contraseñas no coinciden.");
         return false;
       }
-
-      // ✅ Si todo está bien, redirigir a otra página
-      window.location.href = "file:///C:/Users/Oliver/Desktop/py/iniciar.html"; 
+      window.location.href = "file:///C:/Users/Oliver/Desktop/py/iniciar.html";
       return true;
     }
   </script>

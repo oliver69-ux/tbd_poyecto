@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Historial General - Reciclaje UMSS</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Poppins', Arial, sans-serif;
+      background: #e6f1d4;
+      color: #204a00;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 600;
+      text-shadow: 1px 1px 2px #a3d155;
+    }
+
+    .historial-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #f7fbe9;
+      padding: 25px 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 16px;
+    }
+
+    th, td {
+      padding: 14px 15px;
+      border-bottom: 1px solid #cde2a3;
+      text-align: left;
+    }
+
+    th {
+      background-color: #a0d911;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    tr:hover {
+      background-color: #d9f0a3;
+    }
+
+    .tipo-donar {
+      color: #388e3c;
+      font-weight: 600;
+    }
+
+    .tipo-comprar {
+      color: #1976d2;
+      font-weight: 600;
+    }
+
+    .tipo-puntos {
+      color: #fbc02d;
+      font-weight: 600;
+    }
+
+    .btn-volver {
+      display: block;
+      margin: 30px auto 0;
+      background-color: #57c84d;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 8px 15px rgba(87, 200, 77, 0.4);
+      text-align: center;
+      text-decoration: none;
+      width: 200px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-volver:hover {
+      background-color: #45a63c;
+    }
+  </style>
+</head>
+<body>
+  <h1>Historial General de Actividades</h1>
+  <div class="historial-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Tipo de Actividad</th>
+          <th>Descripción</th>
+          <th>Puntos</th>
+        </tr>
+      </thead>
+      <tbody id="historialBody">
+        <!-- Aquí se cargará el historial dinámicamente -->
+      </tbody>
+    </table>
+  </div>
+
+  <a href="file:///C:/Users/Oliver/Desktop/py/principal.html" class="btn-volver">Volver atras</a>
+
+  <script>
+    // Simulamos historial de un usuario con diferentes tipos de acciones
+    const historial = [
+      { fecha: "2025-05-15 10:30", tipo: "donar", descripcion: "Donación de 5 kg de plástico reciclado", puntos: 50 },
+      { fecha: "2025-05-14 18:45", tipo: "comprar", descripcion: "Compra de 1 botella reutilizable", puntos: -100 },
+      { fecha: "2025-05-13 09:20", tipo: "puntos", descripcion: "Ganó puntos por reciclar papel", puntos: 30 },
+      { fecha: "2025-05-12 14:00", tipo: "donar", descripcion: "Donación monetaria para campaña ambiental", puntos: 0 },
+      { fecha: "2025-05-11 16:50", tipo: "puntos", descripcion: "Ganó puntos por reciclar aluminio", puntos: 40 },
+      { fecha: "2025-05-10 12:30", tipo: "comprar", descripcion: "Compra de kit de reciclaje para casa", puntos: -250 },
+    ];
+
+    const tbody = document.getElementById("historialBody");
+
+    historial.forEach(item => {
+      const tr = document.createElement("tr");
+
+      const tdFecha = document.createElement("td");
+      tdFecha.textContent = item.fecha;
+
+      const tdTipo = document.createElement("td");
+      tdTipo.textContent = item.tipo === "donar" ? "Donación" : item.tipo === "comprar" ? "Compra" : "Ganar Puntos";
+      tdTipo.className = 
+        item.tipo === "donar" ? "tipo-donar" : 
+        item.tipo === "comprar" ? "tipo-comprar" : "tipo-puntos";
+
+      const tdDesc = document.createElement("td");
+      tdDesc.textContent = item.descripcion;
+
+      const tdPuntos = document.createElement("td");
+      tdPuntos.textContent = (item.puntos > 0 ? "+" : "") + item.puntos;
+
+      tr.appendChild(tdFecha);
+      tr.appendChild(tdTipo);
+      tr.appendChild(tdDesc);
+      tr.appendChild(tdPuntos);
+
+      tbody.appendChild(tr);
+    });
+  </script>
+</body>
+</html>

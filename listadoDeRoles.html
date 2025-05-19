@@ -16,6 +16,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
     }
     h2 {
       color: #2a5d84;
@@ -25,6 +26,7 @@
       width: 100%;
       border-collapse: collapse;
       margin-top: 20px;
+      background-color: rgba(255, 255, 255, 0.9);
     }
     th, td {
       padding: 10px;
@@ -35,13 +37,13 @@
       background-color: #2a5d84;
       color: white;
     }
-    select {
+    select, input {
       padding: 5px;
       border-radius: 4px;
       border: 1px solid #ccc;
     }
     button {
-      margin-top: 20px;
+      margin-top: 10px;
       padding: 10px 20px;
       background-color: #2a5d84;
       color: white;
@@ -52,17 +54,43 @@
     button:hover {
       background-color: #1e4569;
     }
+    .form-inline {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 10px;
+      border-radius: 8px;
+      flex-wrap: wrap;
+    }
   </style>
 </head>
 <body>
 
   <h2>Listado de Roles y Usuarios</h2>
+
+  <!-- Formulario para agregar nuevo tipo de rol -->
+  <div class="form-inline">
+    <input type="text" id="nuevoTipoRol" placeholder="Nuevo tipo de rol" />
+    <button onclick="agregarTipoRol()">Agregar Tipo de Rol</button>
+  </div>
+
+  <!-- Formulario para agregar nuevos usuarios -->
+  <div class="form-inline">
+    <input type="text" id="nuevoNombre" placeholder="Nombre del usuario" required oninput="buscarUsuarioPorNombre()" list="sugerenciasNombres">
+    <datalist id="sugerenciasNombres"></datalist>
+    <input type="email" id="nuevoCorreo" placeholder="Correo electrónico" required>
+    <input type="password" id="nuevaContrasena" placeholder="Contraseña" required>
+    <button onclick="agregarUsuario()">Agregar Usuario</button>
+  </div>
+
   <form id="rolesForm">
-    <table>
+    <table id="tablaUsuarios">
       <thead>
         <tr>
           <th>Usuario</th>
           <th>Correo</th>
+          <th>Contraseña</th>
           <th>Rol</th>
         </tr>
       </thead>
@@ -70,38 +98,20 @@
         <tr>
           <td>Juan Pérez</td>
           <td>juan@example.com</td>
-          <td>
-            <select name="rol_1">
-              <option value="Administrador">Administrador</option>
-              <option value="Editor">Editor</option>
-              <option value="Usuario">Usuario</option>
-              <option value="Invitado">Invitado</option>
-            </select>
-          </td>
+          <td>******</td>
+          <td><select name="rol_1"></select></td>
         </tr>
         <tr>
           <td>Ana Gómez</td>
           <td>ana@example.com</td>
-          <td>
-            <select name="rol_2">
-              <option value="Administrador">Administrador</option>
-              <option value="Editor" selected>Editor</option>
-              <option value="Usuario">Usuario</option>
-              <option value="Invitado">Invitado</option>
-            </select>
-          </td>
+          <td>******</td>
+          <td><select name="rol_2"></select></td>
         </tr>
         <tr>
           <td>Carlos Ruiz</td>
           <td>carlos@example.com</td>
-          <td>
-            <select name="rol_3">
-              <option value="Administrador">Administrador</option>
-              <option value="Editor">Editor</option>
-              <option value="Usuario" selected>Usuario</option>
-              <option value="Invitado">Invitado</option>
-            </select>
-          </td>
+          <td>******</td>
+          <td><select name="rol_3"></select></td>
         </tr>
       </tbody>
     </table>
@@ -110,6 +120,101 @@
   </form>
 
   <script>
+    let contador = 4;
+    let tiposRol = ["Administrador", "Editor", "Usuario", "Invitado"];
+
+    const usuariosExistentes = [
+      { nombre: "Juan Pérez", correo: "juan@example.com" },
+      { nombre: "Ana Gómez", correo: "ana@example.com" },
+      { nombre: "Carlos Ruiz", correo: "carlos@example.com" },
+      { nombre: "Juan Ortega", correo: "juan.ortega@example.com" }
+    ];
+
+    function actualizarSelects() {
+      const todosSelects = document.querySelectorAll('select');
+      todosSelects.forEach(select => {
+        const valorActual = select.value;
+        select.innerHTML = "";
+        tiposRol.forEach(rol => {
+          const option = document.createElement('option');
+          option.value = rol;
+          option.textContent = rol;
+          if (rol === valorActual) option.selected = true;
+          select.appendChild(option);
+        });
+      });
+    }
+
+    window.onload = function() {
+      actualizarSelects();
+    };
+
+    function agregarTipoRol() {
+      const nuevoRol = document.getElementById("nuevoTipoRol").value.trim();
+      if (nuevoRol && !tiposRol.includes(nuevoRol)) {
+        tiposRol.push(nuevoRol);
+        actualizarSelects();
+        document.getElementById("nuevoTipoRol").value = "";
+        alert(`Rol "${nuevoRol}" agregado exitosamente.`);
+      } else {
+        alert("Rol inválido o ya existe.");
+      }
+    }
+
+    function buscarUsuarioPorNombre() {
+      const nombreInput = document.getElementById("nuevoNombre");
+      const correoInput = document.getElementById("nuevoCorreo");
+      const datalist = document.getElementById("sugerenciasNombres");
+
+      const texto = nombreInput.value.toLowerCase();
+      const coincidencias = usuariosExistentes.filter(usuario =>
+        usuario.nombre.toLowerCase().includes(texto)
+      );
+
+      datalist.innerHTML = "";
+      coincidencias.forEach(usuario => {
+        const option = document.createElement("option");
+        option.value = usuario.nombre;
+        datalist.appendChild(option);
+      });
+
+      const exacto = usuariosExistentes.find(usuario => usuario.nombre.toLowerCase() === texto);
+      if (exacto) {
+        correoInput.value = exacto.correo;
+      } else {
+        correoInput.value = "";
+      }
+    }
+
+    function agregarUsuario() {
+      const nombre = document.getElementById('nuevoNombre').value.trim();
+      const correo = document.getElementById('nuevoCorreo').value.trim();
+      const contrasena = document.getElementById('nuevaContrasena').value.trim();
+
+      if (!nombre || !correo || !contrasena) {
+        alert('Por favor completa el nombre, correo y contraseña.');
+        return;
+      }
+
+      const tbody = document.querySelector('#tablaUsuarios tbody');
+      const fila = document.createElement('tr');
+
+      fila.innerHTML = `
+        <td>${nombre}</td>
+        <td>${correo}</td>
+        <td>${contrasena}</td>
+        <td><select name="rol_${contador}"></select></td>
+      `;
+
+      tbody.appendChild(fila);
+      contador++;
+      actualizarSelects();
+
+      document.getElementById('nuevoNombre').value = '';
+      document.getElementById('nuevoCorreo').value = '';
+      document.getElementById('nuevaContrasena').value = '';
+    }
+
     document.getElementById('rolesForm').addEventListener('submit', function(e) {
       e.preventDefault();
 
@@ -120,14 +225,13 @@
         roles.push({
           usuario: select.closest('tr').children[0].textContent,
           correo: select.closest('tr').children[1].textContent,
+          contrasena: select.closest('tr').children[2].textContent,
           rol: select.value
         });
       });
 
       console.log('Roles guardados:', roles);
       alert('Los cambios de roles han sido guardados (simulado).');
-
-      // Aquí podrías enviar 'roles' a tu servidor o guardarlos localmente
     });
   </script>
 

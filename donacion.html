@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Donar Puntos</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #e8f5e9;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .form-donacion {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    .form-donacion h2 {
+      margin-bottom: 20px;
+      color: #388e3c;
+    }
+
+    .form-donacion label {
+      font-weight: 600;
+      display: block;
+      margin-top: 15px;
+      text-align: left;
+    }
+
+    .form-donacion input,
+    .form-donacion select,
+    .form-donacion textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .botones {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+
+    .form-donacion button {
+      background-color: #43a047;
+      color: white;
+      font-size: 16px;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      flex: 1;
+    }
+
+    .form-donacion button:hover {
+      background-color: #2e7d32;
+    }
+
+    #boton-atras {
+      background-color: #ccc;
+      color: #333;
+    }
+
+    #boton-atras:hover {
+      background-color: #aaa;
+    }
+
+    /* Estilo del modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      max-width: 400px;
+      width: 90%;
+      font-size: 18px;
+    }
+
+    .modal-content h3 {
+      color: #2e7d32;
+      margin-bottom: 15px;
+    }
+
+    .modal-content button {
+      margin-top: 20px;
+      padding: 10px 25px;
+      font-size: 16px;
+      background-color: #66bb6a;
+      border: none;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .modal-content button:hover {
+      background-color: #4caf50;
+    }
+  </style>
+</head>
+<body>
+  <form class="form-donacion" id="formDonacion" onsubmit="enviarDonacion(event)">
+    <h2>Realizar una Donación de Puntos</h2>
+
+    <label for="puntos">Monto de puntos donados</label>
+    <input type="number" id="puntos" min="1" required>
+
+    <label for="destino">A dónde quiere donar</label>
+    <select id="destino" required>
+      <option value="">Seleccione destino</option>
+      <option value="Campaña Ambiental UMSS">Campaña Ambiental UMSS</option>
+      <option value="Proyecto Reforestación">Proyecto Reforestación</option>
+      <option value="Fundación EcoBolivia">Fundación EcoBolivia</option>
+    </select>
+
+    <label for="comentario">Comentario</label>
+    <textarea id="comentario" rows="3" placeholder="(Opcional)"></textarea>
+
+    <div class="botones">
+      <button type="submit" id="btn-donar">Donar</button>
+      <button type="button" id="boton-atras" onclick="window.location.href='file:///C:/Users/Oliver/Desktop/py/principal.html'">Atrás</button>
+    </div>
+  </form>
+
+  <!-- Modal -->
+  <div class="modal" id="modalAgradecimiento">
+    <div class="modal-content">
+      <h3>¡Gracias por tu generosidad! 💚</h3>
+      <p>Tu donación marca la diferencia. Juntos construimos un planeta más verde.</p>
+      <button onclick="cerrarModal()">Aceptar</button>
+    </div>
+  </div>
+
+  <script>
+    function enviarDonacion(e) {
+      e.preventDefault();
+
+      // Mostrar modal
+      document.getElementById('modalAgradecimiento').style.display = 'flex';
+    }
+
+    function cerrarModal() {
+      document.getElementById('modalAgradecimiento').style.display = 'none';
+      window.location.href = 'file:///C:/Users/Oliver/Desktop/py/principal.html';
+    }
+  </script>
+</body>
+</html>
